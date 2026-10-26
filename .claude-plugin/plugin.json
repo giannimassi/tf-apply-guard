@@ -1,6 +1,6 @@
 {
   "name": "tf-apply-guard",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Intercepts terraform apply/destroy in Bash and asks for approval, with a distinct confirmation for production.",
   "license": "MIT",
   "userConfig": {

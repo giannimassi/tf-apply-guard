@@ -2,6 +2,8 @@
 
 A Claude Code mod that catches `terraform apply` (and `destroy`) before Claude runs it and asks you to approve, with a separate, deliberately different confirmation for production.
 
+![demo: Claude plans, the mod stops the production apply with a PROD APPLY dialog, the user picks "Yes, apply to PROD", the apply runs](demo/demo.gif)
+
 ## What it does
 
 - Watches every Bash command Claude is about to run.
@@ -51,5 +53,7 @@ Keywords match case-insensitively as whole words anywhere in the command, so `-c
 claude plugin validate .
 claude plugin test .
 ```
+
+Re-record the demo headlessly with [VHS](https://github.com/charmbracelet/vhs): `vhs demo/demo.tape`. It runs a real `claude` session against `demo/fake-infra`, whose `bin/terraform` is a stub that prints plausible output and changes nothing.
 
 MIT licensed.

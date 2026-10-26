@@ -50,7 +50,7 @@ export const register: Register = (on, options) => {
     }
 
     const policy: Policy = env === 'production' ? 'ask' : env === 'staging' ? stagingPolicy : unknownPolicy
-    $.ui.log(`${$.plugin.name}: ${action} detected [${env}, ${policy}]: ${shown}`)
+    $.ui.log(`${action} detected [${env}, ${policy}]: ${shown}`)
 
     if (policy === 'allow') {
       $.ui.toast(`${action} allowed (${env})`)

@@ -1,0 +1,20 @@
+#!/bin/bash
+# Stub terraform for the demo: prints plausible output, changes nothing.
+dir="."; for a in "$@"; do case $a in -chdir=*) dir="${a#-chdir=}";; esac; done
+env=$(basename "$dir")
+case "$*" in
+  *apply*|*destroy*)
+    echo "aws_lambda_function.api: Modifying... [$env]"
+    sleep 1
+    echo "aws_lambda_function.api: Modifications complete after 1s"; echo
+    echo "Apply complete! Resources: 0 added, 1 changed, 0 destroyed.";;
+  *plan*)
+    echo "Terraform will perform the following actions:"; echo
+    echo "  # aws_lambda_function.api will be updated in-place"
+    echo "  ~ resource \"aws_lambda_function\" \"api\" {"
+    echo "      ~ environment { ~ variables = { + FEATURE_X = \"on\" } }"
+    echo "    }"; echo
+    echo "Plan: 0 to add, 1 to change, 0 to destroy."; echo
+    echo "Saved the plan to: plan.out";;
+  *) echo "stub terraform: $*";;
+esac
