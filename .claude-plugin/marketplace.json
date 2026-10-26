@@ -1,0 +1,13 @@
+{
+  "name": "tf-apply-guard",
+  "owner": {
+    "name": "giannimassi"
+  },
+  "plugins": [
+    {
+      "name": "tf-apply-guard",
+      "source": "./"
+    }
+  ],
+  "description": "Approval gate for terraform apply/destroy in Claude Code, with a distinct production confirmation."
+}

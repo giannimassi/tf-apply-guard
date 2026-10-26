@@ -1,0 +1,58 @@
+{
+  "name": "tf-apply-guard",
+  "version": "0.2.0",
+  "description": "Intercepts terraform apply/destroy in Bash and asks for approval, with a distinct confirmation for production.",
+  "license": "MIT",
+  "userConfig": {
+    "commands": {
+      "type": "string",
+      "description": "Comma-separated binaries to watch.",
+      "default": "terraform,tofu,terragrunt",
+      "title": "Watched binaries"
+    },
+    "actions": {
+      "type": "string",
+      "description": "Comma-separated subcommands that need approval.",
+      "default": "apply,destroy",
+      "title": "Gated actions"
+    },
+    "prodKeywords": {
+      "type": "string",
+      "description": "Comma-separated words that mark a command as production (whole words, case-insensitive).",
+      "default": "prod,production,prd",
+      "title": "Production keywords"
+    },
+    "stagingKeywords": {
+      "type": "string",
+      "description": "Comma-separated words that mark a command as staging/non-prod.",
+      "default": "staging,stage,stg,dev,sandbox",
+      "title": "Staging keywords"
+    },
+    "stagingPolicy": {
+      "type": "string",
+      "description": "What to do for a staging command: ask for approval, or allow it and just log.",
+      "options": [
+        "ask",
+        "allow"
+      ],
+      "default": "ask",
+      "title": "Staging policy"
+    },
+    "unknownPolicy": {
+      "type": "string",
+      "description": "What to do when the environment can't be told from the command.",
+      "options": [
+        "ask",
+        "allow"
+      ],
+      "default": "ask",
+      "title": "Unknown-environment policy"
+    },
+    "blockAutoApprove": {
+      "type": "boolean",
+      "description": "Deny any watched command carrying -auto-approve outright, without asking.",
+      "default": true,
+      "title": "Block -auto-approve"
+    }
+  }
+}
